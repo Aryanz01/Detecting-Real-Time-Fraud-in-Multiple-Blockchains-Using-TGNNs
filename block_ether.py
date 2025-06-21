@@ -6,6 +6,7 @@ from decimal import Decimal
 from web3 import Web3
 import requests
 import pandas as pd
+from clean_transactions import clean_transaction_data
 
 # ------------------------- CONFIG ------------------------- #
 ETHEREUM_RPC = "https://mainnet.infura.io/v3/65aeaa5ff07340e38fc51789e05391a5"
@@ -179,4 +180,10 @@ def stream_blocks(eth_blocks=1, solana_txs=1, btc_blocks=1, output_file="raw_tra
     print(f"Saved raw transaction data to {output_file}")
 
 if __name__ == "__main__":
-    stream_blocks(eth_blocks=1, solana_txs=1, btc_blocks=1)
+    raw_file = "raw_transactions.csv"
+    processed_file = "processed_transactions.csv"
+
+    stream_blocks(eth_blocks=1, solana_txs=1, btc_blocks=1, output_file=raw_file)
+
+    # Run preprocessing after extraction
+    clean_transaction_data(raw_file, processed_file)
