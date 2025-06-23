@@ -6,7 +6,7 @@ from decimal import Decimal
 from web3 import Web3
 import requests
 import pandas as pd
-from clean_transactions import clean_transaction_data
+from data_preprocessing.clean_transactions import clean_transaction_data
 
 # ------------------------- CONFIG ------------------------- #
 ETHEREUM_RPC = "https://mainnet.infura.io/v3/65aeaa5ff07340e38fc51789e05391a5"
